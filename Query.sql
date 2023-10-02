@@ -9,6 +9,7 @@ GROUP BY 1
 ORDER BY 2 DESC;
 
 
+
 -- City with best customer
 SELECT c.city,
        sum(il.quantity * il.unitprice) "revenue"
@@ -18,6 +19,7 @@ JOIN invoiceline il ON i.invoiceid = il.invoiceid
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 1;
+
 
 
 -- Best Customer
@@ -43,6 +45,7 @@ JOIN invoiceline il ON i.invoiceid = il.invoiceid
 JOIN track t ON il.trackid = t.trackid
 JOIN genre g ON t.genreid = g.genreid
 WHERE g.name = 'Rock';
+
 
 
 -- Writer of Top Music in Rock Genre
@@ -126,7 +129,6 @@ ORDER BY BillingCountry;
 
 
 
-
 -- Tracks that have a song length longer than average song length
 select name,
        milliseconds
@@ -134,7 +136,6 @@ from track
 where milliseconds >
     (select avg(milliseconds)
      from track)
-
 
 
 
@@ -160,7 +161,6 @@ group by 1;
 
 
 
-
 -- Customer that has spent the most on music for each country
 WITH RANKING AS
   (SELECT i.billingcountry "Country",
@@ -181,7 +181,6 @@ Select "Country",
 from ranking
 where rank = 1
 Order by 1
-
 
 
 
